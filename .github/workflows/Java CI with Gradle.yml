@@ -75,6 +75,8 @@ jobs:
     - name: Build and Push Image
       uses: docker/build-push-action@v4
       with:
+        context : ./
+        file: ./Dockerfile.dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/java21:latest
         
