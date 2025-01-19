@@ -54,7 +54,7 @@ jobs:
         path: build/libs
 
   docker:
-
+    needs : build 
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -75,8 +75,6 @@ jobs:
     - name: Build and Push Image
       uses: docker/build-push-action@v4
       with:
-        context: .
-        file: /Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/java21:latest
         
